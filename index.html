@@ -3,17 +3,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>это заголовок</title>
+    <title>SPb public transport map</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
     <style>
-      /* по умолчанию у страницы есть белая рамка. уберем ее. */
       body, html {
         padding: 0;
         margin: 0;
       }
-      /* это правило нужно, потому что пустые HTML-элементы схлопываются по высоте */
       #map {
-        height: 100vh; /* vh = Viewport Height, 100 vh = высота окна */
+        height: 100vh;
       }
     </style>
   </head>
@@ -21,7 +19,6 @@
   <body>
     <div id="map"></div>
 
-    <!-- саму библиоекту подгружаем из интернета -->
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script src="leaflet.js"></script>
   </body>
