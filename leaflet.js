@@ -4,7 +4,7 @@ map.addLayer(
   new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 );
 
-fetch('/data.json')
+fetch('/public-transport-map/data.json')
   .then(r => r.json())
   .then(data => {
     Object.values(data.stops).forEach(s => {
