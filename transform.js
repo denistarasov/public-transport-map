@@ -8,12 +8,18 @@ const filenames = fs.readdirSync(__dirname + `/routes`);
 
 // now read all route in one json array
 const routeFiles = [];
+const shapeFiles = [];
 filenames.forEach(filename => {
-    console.log(filename);
+    
     /*routeFiles.push({
         filename: fs.readFileSync(__dirname + `/routes/${filename}`)
     });*/
-    routeFiles.push(fs.readFileSync(__dirname + `/routes/${filename}`));
+    if (!filename.match(/(.*)_shape.json/)) { // if not shapes but routes
+        routeFiles.push(fs.readFileSync(__dirname + `/routes/${filename}`));
+        console.log(filename);
+    } else { // if filename contains a shape
+        shapeFiles.push(fs.readFileSync(__dirname + `/routes/${filename}`));
+    }
 });
 
 // json string containing all routes and set of stops
@@ -44,8 +50,8 @@ routeFiles.forEach(routeStr => {
             A: {
                 stops: route['features'].map(stop => stop.id),
                 shape: route['features'].map(stop => {
-                var coords = merc.inverse([stop.geometry.coordinates[0],stop.geometry.coordinates[1]]);
-                return [coords[1], coords[0]];
+                    var coords = merc.inverse([stop.geometry.coordinates[0],stop.geometry.coordinates[1]]);
+                    return [coords[1], coords[0]];
                 }),
             }
         },
