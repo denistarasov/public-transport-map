@@ -53,12 +53,24 @@ const parse_route = (num_arr, count) => {
         return;
     const id = num_arr[count];
     console.log(`Currently parsing route #${id}`);
-    const url = `http://transport.orgp.spb.ru/Portal/transport/map/poi?ROUTE=${id}&REQUEST=GetFeature&_=1488372392174`;
+    // parse stops
+    var url = `http://transport.orgp.spb.ru/Portal/transport/map/poi?ROUTE=${id}&REQUEST=GetFeature&_=1488372392174`;
     request({
         url,
     }, (err, res, body) => {
         fs.writeFileSync(path.join(__dirname, `/routes/${id}.json`), body);
     });
+    // parse shape
+    url = `http://transport.orgp.spb.ru/Portal/transport/map/stage?ROUTE=${id}&REQUEST=GetFeature&BBOX=0,0,10000000,10000000`;
+    request({
+        url,
+        form: {
+            Referer: `http://transport.orgp.spb.ru/Portal/transport/main`
+        },
+    }, (err, res, body) => {
+        fs.writeFileSync(path.join(__dirname, `/routes/${id}_shape.json`), body);
+    });
+
     ++count;
 
     setTimeout(function() {
