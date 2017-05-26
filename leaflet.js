@@ -25,6 +25,8 @@ fetch('data.json')
         });
     });
 
+// this function is called from html
+// when 'change color' button pressed
 function changeColor() {
     var color = '#' + document.getElementById("color-choice").value;
     polylines.forEach(p => {

@@ -5,6 +5,7 @@
         <meta charset="utf-8">
         <title>St. Petersburg transport map</title>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" />
+        <link rel="stylesheet" type="text/css" href="styles.css">
         <style>
             body, html {
                 padding: 0;
@@ -13,36 +14,21 @@
             #map {
                 height: 100vh;
             }
-            #box {
-                position: fixed;
-                top: 10px;
-                right: 10px;
-                z-index: 1000;
-                background-color: white;
-                height: 200px;
-                width: 180px;
-                padding: 10px;
-                box-sizing: border-box;
-                border: 2px solid black;
-            }
-            #color-choice {
-                max-width: 80%;
-                /*margin: 5px;*/
-                /*display: inline-block;*/
-                border: 2px solid black;
-                /*width: 80%;*/
-            }
         </style>
     </head>
 
     <body>
         <div id="map"></div>
         <div id="box">
+            <!-- change color -->
             #<input
                 id="color-choice"
                 type="text"
             ></input>
             <button id="color-choice" onclick="changeColor()">Change  color of routes</button>
+            <!-- change stop icon -->
+            <div id="round_with_void_stop"></div>
+            <div id="square_stop"></div>
         </div>
 
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
