@@ -4,6 +4,8 @@ map.addLayer(
     new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 );
 
+const polylines = [];
+
 fetch('data.json')
     .then(r => r.json())
     .then(data => {
@@ -18,8 +20,16 @@ fetch('data.json')
 
         Object.values(data.routes).forEach(r => {
             Object.values(r.trips).forEach(t => {
-                L.polyline(t.shape, {color: 'red'})
-                    .addTo(map);
+                polylines.push(L.polyline(t.shape, {color: 'red'}).addTo(map));
             });
         });
     });
+
+function changeColor() {
+    var color = '#' + document.getElementById("color-choice").value;
+    polylines.forEach(p => {
+        p.setStyle({
+            color: color
+        });
+    });
+}
