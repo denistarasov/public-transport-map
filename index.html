@@ -20,17 +20,17 @@
                 z-index: 1000;
                 background-color: white;
                 height: 200px;
-                width: 150px;
+                width: 180px;
                 padding: 10px;
                 box-sizing: border-box;
                 border: 2px solid black;
             }
             #color-choice {
-                /*max-width: 100%;*/
-                /*padding: 50px;*/
-                display: inline-block;
+                max-width: 80%;
+                /*margin: 5px;*/
+                /*display: inline-block;*/
                 border: 2px solid black;
-                width: 50%;
+                /*width: 80%;*/
             }
         </style>
     </head>
@@ -38,11 +38,11 @@
     <body>
         <div id="map"></div>
         <div id="box">
-            <input
+            #<input
                 id="color-choice"
                 type="text"
             ></input>
-            <button onclick="changeColor()">Change color</button>
+            <button id="color-choice" onclick="changeColor()">Change  color of routes</button>
         </div>
 
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
