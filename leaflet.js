@@ -32,7 +32,7 @@ fetch('data.json')
 
         Object.values(data.routes).forEach(r => {
             Object.values(r.trips).forEach(t => {
-                polylines.push(L.polyline(t.shape, {color: 'red'}).addTo(map));
+                polylines.push(L.polyline(t.shape, {color: '#2d9149'}).addTo(map));
             });
         });
     });
