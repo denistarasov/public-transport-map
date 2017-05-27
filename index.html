@@ -21,14 +21,28 @@
         <div id="map"></div>
         <div id="box">
             <!-- change color -->
-            #<input
-                id="color-choice"
-                type="text"
-            ></input>
-            <button id="color-choice" onclick="changeColor()">Change  color of routes</button>
+            <div id="color-choice">Route color:
+                <input type="text" placeholder="input hex"></input>
+                <button id="color-choice" onclick="changeColor()">Submit</button>
+            </div>
             <!-- change stop icon -->
-            <div id="round_with_void_stop"></div>
-            <div id="square_stop"></div>
+            <div class="stop_style_div">Stop styles:
+                <div class="style_option">
+                    <input name="stop_style" type="radio" onclick="changeStop()" id="option1">standard (fast)</input>
+                </div>
+                <div class="style_option">
+                    <input name="stop_style" type="radio" onclick="changeStop()" id="option2">circle with inner circle (slow)</input>
+                    <!-- <div name="stop_style" class="style_preview round_with_void_stop"></div> -->
+                </div>
+                <div class="style_option">
+                    <input name="stop_style" type="radio" onclick="changeStop()" id="option3">square (slow)</input>
+                    <!-- <div class="style_preview square_stop"></div> -->
+                </div>
+                </div>
+                <div class="style_option">
+                    <input name="stop_style" type="radio" onclick="changeStop()" id="option4">remove</input>
+                </div>
+            </div>
         </div>
 
         <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
