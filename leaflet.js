@@ -4,6 +4,10 @@ map.addLayer(
     new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 );
 
+var myRenderer = L.canvas({
+    padding: 0.5
+});
+
 const polylines = [];
 const markers = [];
 const stops = [];
@@ -18,6 +22,7 @@ fetch('data.json')
                 color: '#000',
                 fillOpacity: 0.8,
                 radius: 5,
+                renderer: myRenderer
             }).addTo(map));
         });
         // Object.values(data.stops).forEach(s => {
@@ -32,7 +37,10 @@ fetch('data.json')
 
         Object.values(data.routes).forEach(r => {
             Object.values(r.trips).forEach(t => {
-                polylines.push(L.polyline(t.shape, {color: '#2d9149'}).addTo(map));
+                polylines.push(L.polyline(t.shape, {
+                    color: '#2d9149',
+                    renderer: myRenderer
+                }).addTo(map));
             });
         });
     });
@@ -59,6 +67,7 @@ function changeStop() {
                 color: '#000',
                 fillOpacity: 0.8,
                 radius: 5,
+                renderer: myRenderer
             }).addTo(map).bringToBack());
         });
     }
@@ -69,7 +78,8 @@ function changeStop() {
         });
         stops.forEach(s => {
             markers.push(L.marker([s.lat, s.long], {
-                icon: myIcon
+                icon: myIcon,
+                renderer: myRenderer
             }).addTo(map));
         });
     }
@@ -80,7 +90,8 @@ function changeStop() {
         });
         stops.forEach(s => {
             markers.push(L.marker([s.lat, s.long], {
-                icon: myIcon
+                icon: myIcon,
+                renderer: myRenderer
             }).addTo(map));
         });
     }
