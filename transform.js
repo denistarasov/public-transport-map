@@ -89,5 +89,6 @@ routeFiles.forEach(routeStr => {
         },
     };
 });
-const resJson = JSON.stringify(result, null, '  ');
+// const resJson = JSON.stringify(result, null, '  '); // for better json visualization
+const resJson = JSON.stringify(result); // for faster download
 fs.writeFileSync('data.json', resJson);
