@@ -1,7 +1,7 @@
 const map = L.map('map');
 map.setView([59.95,30.3], 11);
 map.addLayer(
-    new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
+    new L.TileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png')
 );
 
 var myRenderer = L.canvas({
