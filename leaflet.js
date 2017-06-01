@@ -13,17 +13,17 @@ const markers = [];
 const stops = [];
 
 var initialStyle = {
-    color: '#2d9149',
+    // color: '#2d9149',
     weight: 3,
     renderer: myRenderer
 };
 var hoverStyle = {
-    color: "#333",
+    // color: "#333",
     weight: 7,
     renderer: myRenderer
 };
 var clickStyle = {
-    color: "#111",
+    // color: "#111",
     weight: 10,
     renderer: myRenderer
 };
