@@ -34,13 +34,28 @@ fetch('data.json')
         //         // radius: 5,
         //     }).addTo(map));
         // });
+        var initialStyle = {
+            color: '#2d9149',
+            weight: 3,
+            renderer: myRenderer
+        };
+        var hoverStyle = {
+            color: "#112233",
+            weight: 9,
+            renderer: myRenderer
+        }
 
         Object.values(data.routes).forEach(r => {
             Object.values(r.trips).forEach(t => {
-                polylines.push(L.polyline(t.shape, {
-                    color: '#2d9149',
-                    renderer: myRenderer
-                }).addTo(map));
+                polylines.push(L.polyline(t.shape, initialStyle)
+                .on("mouseover", function () {
+                    this.setStyle(hoverStyle);
+                    this.bringToFront();
+                })
+                .on("mouseout", function () {
+                    this.setStyle(initialStyle);
+                })
+                .addTo(map));
             });
         });
     });
